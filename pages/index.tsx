@@ -5,8 +5,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div className="text-center flex flex-col lg:flex-row antialiased h-screen w-4/5 sm:w-4/5 md:w-screen lg:w-3/5 mx-auto">
-      <div className="space-y-5 flex flex-col lg:h-screen justify-center items-center lg:w-1/2">
+    <div className="text-center flex flex-col lg:flex-row antialiased w-4/5 sm:w-4/5 md:w-screen lg:w-3/5 mx-auto">
+      <div className="space-y-5 flex flex-col justify-center items-center lg:h-screen lg:w-1/2">
         <div className="text-5xl">More Than Strangers</div>
         <div className="mx-auto text-xl px-4">
           <p>
