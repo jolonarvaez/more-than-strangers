@@ -9,13 +9,13 @@ export default function Home() {
       <div className="space-y-5 flex flex-col justify-center items-center lg:h-screen lg:w-1/2">
         <div
           className="text-5xl animate-in"
-          style={{ "--index": 1 } as React.CSSProperties}
+          style={{ "--index": 0 } as React.CSSProperties}
         >
           More Than Strangers
         </div>
         <div
           className="mx-auto text-xl px-4 animate-in"
-          style={{ "--index": 2 } as React.CSSProperties}
+          style={{ "--index": 1 } as React.CSSProperties}
         >
           <p>
             Discover the essence of connection in "More Than Strangers", an
@@ -28,7 +28,7 @@ export default function Home() {
         <img
           className="mx-auto h-1/2 animate-in"
           src="figure1.svg"
-          style={{ "--index": 3 } as React.CSSProperties}
+          style={{ "--index": 2 } as React.CSSProperties}
         />
       </div>
 
