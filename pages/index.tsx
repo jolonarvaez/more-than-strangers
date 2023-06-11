@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,9 +57,11 @@ export default function Home() {
             style={{ "--index": 3 } as React.CSSProperties}
           >
             <div className="text-3xl">Ready to Play?</div>
-            <button className="px-6 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out border-purple border-2 hover:bg-purple hover:text-white text-purple">
-              <div className="text-xl font-medium">Start</div>
-            </button>
+            <Link href="/start" className="">
+              <button className="mt-6 px-6 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out hover:scale-110 border-purple border-2 hover:bg-purple hover:text-white text-purple">
+                <div className="text-xl font-medium">Start</div>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
