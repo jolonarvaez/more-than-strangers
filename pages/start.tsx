@@ -47,10 +47,10 @@ const start = () => {
                 value={theme.name}
                 as={Fragment}
               >
-                {({ active }) => (
+                {({ checked }) => (
                   <div
                     className={`py-3 rounded-xl animate-in shadow-lg cursor-pointer hover:scale-105 ${
-                      active
+                        checked
                         ? "bg-purple transition ease-in-out text-white ring-2 ring-offset-2"
                         : "bg-material-white text-slate-950"
                     }`}
@@ -61,7 +61,7 @@ const start = () => {
                     </div>
                     <div
                       className={`text-sm font-normal mx-5 mt-2  ${
-                        active ? "text-slate-300" : "text-gray-500"
+                        checked ? "text-slate-300" : "text-gray-500"
                       }`}
                     >
                       {theme.description}
