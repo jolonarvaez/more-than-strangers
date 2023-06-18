@@ -3,6 +3,7 @@ import { RadioGroup } from "@headlessui/react";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 const themes = [
   {
@@ -39,6 +40,43 @@ const start = () => {
   const exit = () => {
     setThemeSelect(false);
     setGame(true);
+  };
+
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [cardIndex, setCardIndex] = useState(0);
+  const [cards] = useState([
+    { index: 0, prompt: "Question 1?", isFlipped: false },
+    { index: 1, prompt: "Question 2?", isFlipped: false },
+    { index: 2, prompt: "Question 3?", isFlipped: false },
+    { index: 3, prompt: "Question 4?", isFlipped: false },
+    { index: 4, prompt: "Question 5?", isFlipped: false },
+  ]);
+  const [currentPrompt, setCurrentPrompt] = useState(cards[0].prompt);
+
+  const flipCard = () => {
+    setIsFlipped(!isFlipped);
+  };
+
+  const nextCard = () => {
+    if (isFlipped) {
+      flipCard();
+    }
+
+    setTimeout(() => {
+      setCardIndex(cardIndex + 1);
+      setCurrentPrompt(cards[cardIndex + 1].prompt);
+    }, 200);
+  };
+
+  const prevCard = () => {
+    if (isFlipped) {
+      flipCard();
+    }
+
+    setTimeout(() => {
+      setCardIndex(cardIndex - 1);
+      setCurrentPrompt(cards[cardIndex - 1].prompt);
+    }, 1000);
   };
 
   return (
@@ -92,7 +130,6 @@ const start = () => {
                 className="w-full flex justify-center animate-in"
                 style={{ "--index": 5 } as React.CSSProperties}
               >
-                {/* <Link href="/" className=""> */}
                 <button
                   disabled={theme === ""}
                   onClick={exit}
@@ -105,19 +142,59 @@ const start = () => {
                 >
                   <div className="text-xl font-medium">Continue</div>
                 </button>
-                {/* </Link> */}
               </div>
             </div>
           </motion.div>
         )}
 
-        {/* {game && (
+        {game && (
           <div className="w-screen h-screen flex items-center justify-center mx-auto ">
             <div className="animate-in">
-              <Card />
+              <div className="space-y-3">
+                <div
+                  className="text-material-white text-center text-2xl animate-in transition"
+                  style={{ "--index": 1 } as React.CSSProperties}
+                >
+                  {cardIndex}/40
+                </div>
+                <div
+                  className="animate-in"
+                  style={{ "--index": 2 } as React.CSSProperties}
+                >
+                  <div>
+                    <Card
+                      onClick={flipCard}
+                      isFlipped={isFlipped}
+                      setIsFlipped={setIsFlipped}
+                      prompt={currentPrompt}
+                    />
+                  </div>
+                </div>
+                <div
+                  className="flex flex-row justify-center gap-8 text-2xl animate-in"
+                  style={{ "--index": 3 } as React.CSSProperties}
+                >
+                  <motion.div whileTap={{ scale: 0.8 }}>
+                    <button
+                      onClick={prevCard}
+                      className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
+                    >
+                      <AiOutlineLeft />
+                    </button>
+                  </motion.div>
+                  <motion.div whileTap={{ scale: 0.8 }}>
+                    <button
+                      onClick={nextCard}
+                      className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
+                    >
+                      <AiOutlineRight />
+                    </button>
+                  </motion.div>
+                </div>
+              </div>
             </div>
           </div>
-        )} */}
+        )}
       </AnimatePresence>
     </div>
   );
