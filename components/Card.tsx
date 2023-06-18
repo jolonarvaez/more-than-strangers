@@ -19,8 +19,8 @@ const Card = (props: any) => {
         <div className="bg-material-white rounded-lg flip-card-front shadow-2xl">
           <div className="text-5xl font-semibold text-purple">MTS</div>
         </div>
-        <div className="bg-material-white rounded-lg flip-card-back shadow-xl">
-          <div className="text-2xl">{props.prompt}</div>
+        <div className="bg-material-white rounded-lg text-center flip-card-back shadow-xl">
+          <div className="mx-5 text-3xl">{props.prompt}</div>
         </div>
       </motion.div>
     </div>

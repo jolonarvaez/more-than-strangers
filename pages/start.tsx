@@ -1,9 +1,12 @@
 import Card from "@/components/Card";
 import { RadioGroup } from "@headlessui/react";
-import Link from "next/link";
 import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import OverComingAversity from "../data/overcomingadversity.json";
+import DreamsAndAspirations from "../data/dreamsandaspirations.json";
+import LoveAndConnection from "../data/loveandconnection.json";
+import MindAndBodyWellNess from "../data/mindandbodywellness.json";
 
 const themes = [
   {
@@ -33,31 +36,49 @@ const themes = [
 ];
 
 const start = () => {
-  let [theme, setTheme] = useState("");
-  let [themeSelect, setThemeSelect] = useState(true);
-  let [game, setGame] = useState(false);
+  const [theme, setTheme] = useState("");
+  const [themeSelect, setThemeSelect] = useState(true);
+  const [game, setGame] = useState(false);
+
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [cardIndex, setCardIndex] = useState(0);
+
+  const [cards, setCards] = useState([{ index: 0, prompt: "" }]);
+  const [currentPrompt, setCurrentPrompt] = useState("");
 
   const exit = () => {
     setThemeSelect(false);
     setGame(true);
-  };
 
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [cardIndex, setCardIndex] = useState(0);
-  const [cards] = useState([
-    { index: 0, prompt: "Question 1?", isFlipped: false },
-    { index: 1, prompt: "Question 2?", isFlipped: false },
-    { index: 2, prompt: "Question 3?", isFlipped: false },
-    { index: 3, prompt: "Question 4?", isFlipped: false },
-    { index: 4, prompt: "Question 5?", isFlipped: false },
-  ]);
-  const [currentPrompt, setCurrentPrompt] = useState(cards[0].prompt);
+    let prompts: Prompt[] = [];
+
+    switch (theme) {
+      case "Overcoming Adversity Deck":
+        prompts = OverComingAversity;
+        break;
+      case "Mind and Body Wellness Deck":
+        prompts = MindAndBodyWellNess;
+        break;
+      case "Love and Connection Deck":
+        prompts = LoveAndConnection;
+        break;
+      case "Dreams and Aspirations Deck":
+        prompts = DreamsAndAspirations;
+        break;
+    }
+
+    prompts = prompts.sort(() => 0.5 - Math.random()).splice(0, 20);
+    setCards(prompts);
+    setCurrentPrompt(prompts[0].prompt);
+  };
 
   const flipCard = () => {
     setIsFlipped(!isFlipped);
   };
 
   const nextCard = () => {
+    if (cardIndex == 19) return;
+
     if (isFlipped) {
       flipCard();
     }
@@ -69,14 +90,9 @@ const start = () => {
   };
 
   const prevCard = () => {
-    if (isFlipped) {
-      flipCard();
-    }
-
-    setTimeout(() => {
-      setCardIndex(cardIndex - 1);
-      setCurrentPrompt(cards[cardIndex - 1].prompt);
-    }, 1000);
+    if (cardIndex == 0) return;
+    setCardIndex(cardIndex - 1);
+    setCurrentPrompt(cards[cardIndex - 1].prompt);
   };
 
   return (
@@ -87,7 +103,7 @@ const start = () => {
             exit={{ y: 200, opacity: "0" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="w-full lg:w-5/12 h-screen flex flex-col justify-center mx-auto">
+            <div className="w-full lg:w-3/4 xl:w-6/12 h-screen flex flex-col justify-center mx-auto">
               <div className="text-white text-center font-medium text-3xl animate-in">
                 Select a Deck Theme
               </div>
@@ -149,48 +165,58 @@ const start = () => {
 
         {game && (
           <div className="w-screen h-screen flex items-center justify-center mx-auto ">
-            <div className="animate-in">
-              <div className="space-y-3">
-                <div
-                  className="text-material-white text-center text-2xl animate-in transition"
-                  style={{ "--index": 1 } as React.CSSProperties}
-                >
-                  {cardIndex}/40
+            <div className="space-y-3">
+              <div
+                className="text-center text-white text-2xl animate-in"
+                style={{ "--index": 1 } as React.CSSProperties}
+              >
+                {theme}
+              </div>
+              <div
+                className="text-material-white text-center text-xl animate-in transition"
+                style={{ "--index": 2 } as React.CSSProperties}
+              >
+                {cardIndex + 1}/{cards.length}
+              </div>
+              <div
+                className="animate-in"
+                style={{ "--index": 3 } as React.CSSProperties}
+              >
+                <div>
+                  <Card
+                    onClick={flipCard}
+                    isFlipped={isFlipped}
+                    setIsFlipped={setIsFlipped}
+                    prompt={currentPrompt}
+                  />
                 </div>
-                <div
-                  className="animate-in"
-                  style={{ "--index": 2 } as React.CSSProperties}
-                >
-                  <div>
-                    <Card
-                      onClick={flipCard}
-                      isFlipped={isFlipped}
-                      setIsFlipped={setIsFlipped}
-                      prompt={currentPrompt}
-                    />
-                  </div>
-                </div>
-                <div
-                  className="flex flex-row justify-center gap-8 text-2xl animate-in"
-                  style={{ "--index": 3 } as React.CSSProperties}
-                >
-                  <motion.div whileTap={{ scale: 0.8 }}>
-                    <button
-                      onClick={prevCard}
-                      className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
-                    >
-                      <AiOutlineLeft />
-                    </button>
-                  </motion.div>
-                  <motion.div whileTap={{ scale: 0.8 }}>
-                    <button
-                      onClick={nextCard}
-                      className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
-                    >
-                      <AiOutlineRight />
-                    </button>
-                  </motion.div>
-                </div>
+              </div>
+              <div
+                className="flex flex-row justify-center items-center gap-8 text-2xl animate-in"
+                style={{ "--index": 4 } as React.CSSProperties}
+              >
+                <motion.div whileTap={{ scale: 0.8 }}>
+                  <button
+                    onClick={prevCard}
+                    className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
+                  >
+                    <AiOutlineLeft />
+                  </button>
+                </motion.div>
+                <motion.div whileTap={{ scale: 0.8 }}>
+                  <button
+                    onClick={nextCard}
+                    className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
+                  >
+                    {cardIndex == 19 ? (
+                      <div className="text-md">Finish</div>
+                    ) : (
+                      <div>
+                        <AiOutlineRight />
+                      </div>
+                    )}
+                  </button>
+                </motion.div>
               </div>
             </div>
           </div>
