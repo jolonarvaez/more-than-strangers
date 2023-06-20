@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,13 +10,13 @@ export default function Home() {
       <div className="space-y-5 flex flex-col justify-center items-center lg:h-screen lg:w-1/2">
         <div
           className="text-5xl animate-in"
-          style={{ "--index": 1 } as React.CSSProperties}
+          style={{ "--index": 0 } as React.CSSProperties}
         >
           More Than Strangers
         </div>
         <div
           className="mx-auto text-xl px-4 animate-in"
-          style={{ "--index": 2 } as React.CSSProperties}
+          style={{ "--index": 1 } as React.CSSProperties}
         >
           <p>
             Discover the essence of connection in "More Than Strangers", an
@@ -28,7 +29,7 @@ export default function Home() {
         <img
           className="mx-auto h-1/2 animate-in"
           src="figure1.svg"
-          style={{ "--index": 3 } as React.CSSProperties}
+          style={{ "--index": 2 } as React.CSSProperties}
         />
       </div>
 
@@ -56,9 +57,11 @@ export default function Home() {
             style={{ "--index": 3 } as React.CSSProperties}
           >
             <div className="text-3xl">Ready to Play?</div>
-            <button className="px-6 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out border-purple border-2 hover:bg-purple hover:text-white text-purple">
-              <div className="text-xl font-medium">Start</div>
-            </button>
+            <Link href="/start" className="">
+              <button className="mt-6 px-6 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out hover:scale-110 border-purple border-2 hover:bg-purple hover:text-white text-purple">
+                <div className="text-xl font-medium">Start</div>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
