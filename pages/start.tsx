@@ -37,7 +37,7 @@ const themes = [
   },
 ];
 
-const start = () => {
+const Start = () => {
   const [theme, setTheme] = useState("");
   const [themeSelect, setThemeSelect] = useState(true);
   const [game, setGame] = useState(false);
@@ -129,13 +129,13 @@ const start = () => {
           <RadioGroup value={theme} onChange={setTheme}>
             <div className="mt-6 mx-6 grid grid-cols-1 md:grid-cols-2 gap-5">
               {themes.map((theme) => (
-                <motion.div whileHover={{ scale: 1.05 }}>
-                  <RadioGroup.Option
-                    key={theme.name}
-                    value={theme.name}
-                    as={Fragment}
-                  >
-                    {({ checked }) => (
+                <RadioGroup.Option
+                  key={theme.name}
+                  value={theme.name}
+                  as={Fragment}
+                >
+                  {({ checked }) => (
+                    <motion.div whileHover={{ scale: 1.05 }}>
                       <div
                         className={`py-3 rounded-xl animate-in shadow-lg cursor-pointer hover:scale-105 ${
                           checked
@@ -157,9 +157,9 @@ const start = () => {
                           {theme.description}
                         </div>
                       </div>
-                    )}
-                  </RadioGroup.Option>
-                </motion.div>
+                    </motion.div>
+                  )}
+                </RadioGroup.Option>
               ))}
             </div>
           </RadioGroup>
@@ -269,4 +269,4 @@ const start = () => {
   );
 };
 
-export default start;
+export default Start;

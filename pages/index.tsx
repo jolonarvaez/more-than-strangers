@@ -19,11 +19,11 @@ export default function Home() {
           style={{ "--index": 1 } as React.CSSProperties}
         >
           <p>
-            Discover the essence of connection in "More Than Strangers", an
-            engaging social interaction game inspired by "We're Not Strangers."
+            Discover the essence of connection in &quot;More Than Strangers&quot;, an
+            engaging social interaction game inspired by &quot;We&apos;re Not Strangers&quot;.
             Uncover hidden truths, forge meaningful bonds, and navigate
             intriguing conversations to unravel the mysteries of strangers. Are
-            you ready to unveil the questions that make us more than strangers?{" "}
+            you ready to unveil the questions that make us more than strangers?
           </p>
         </div>
         <img
