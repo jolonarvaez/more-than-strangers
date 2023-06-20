@@ -15,7 +15,7 @@ export default function Home() {
           More Than Strangers
         </div>
         <div
-          className="mx-auto text-xl px-4 animate-in"
+          className="mx-auto text-xl px-4 animate-in text-justify"
           style={{ "--index": 1 } as React.CSSProperties}
         >
           <p>
@@ -45,11 +45,10 @@ export default function Home() {
             style={{ "--index": 2 } as React.CSSProperties}
           >
             <div className="text-4xl">How to Play</div>
-            <div className="mx-auto px-4 text-xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              aliquam enim at feugiat dictum. Phasellus ultrices sem sed arcu
-              rutrum, et luctus nulla fringilla. Nullam ac feugiat nulla. Fusce
-              convallis condimentum erat, ut blandit nisl tempus nec.
+            <div className="mx-auto px-4 text-xl text-justify">
+              This game requires at least 2 people to play. Choose a
+              theme and take turns asking each other the card prompts. Are you
+              ready to become more than strangers?
             </div>
           </div>
           <div
