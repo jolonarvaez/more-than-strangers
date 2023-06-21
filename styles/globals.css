@@ -31,8 +31,6 @@
 }
 
 .flip-card {
-  height: 306px;
-  width: 514px;
   position: relative;
   transform-style: preserve-3d;
   cursor: pointer;

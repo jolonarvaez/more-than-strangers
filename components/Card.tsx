@@ -10,7 +10,7 @@ const Card = (props: any) => {
   return (
     <div onClick={flipDiv} className="container antialiased animate">
       <motion.div
-        className={`flip-card ${props.isFlipped ? "flipped" : ""}`}
+        className={`h-[210px] w-[340px] lg:h-[306px] lg:w-[514px] flip-card ${props.isFlipped ? "flipped" : ""}`}
         initial={{ scale: 1 }}
         whileTap={{ scale: 0.9 }}
         animate={{ rotateY: props.isFlipped ? 180 : 0 }}
@@ -20,7 +20,7 @@ const Card = (props: any) => {
           <div className="text-5xl font-semibold text-purple">MTS</div>
         </div>
         <div className="bg-material-white rounded-lg text-center flip-card-back shadow-xl">
-          <div className="mx-5 text-3xl">{props.prompt}</div>
+          <div className="mx-5 text-xl lg:text-3xl">{props.prompt}</div>
         </div>
       </motion.div>
     </div>

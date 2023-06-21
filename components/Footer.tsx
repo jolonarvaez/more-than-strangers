@@ -2,9 +2,9 @@ import { BsLinkedin, BsGithub } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div className="bg-purple lg:absolute bottom-0 text-white w-screen h-24 lg:h-16">
-      <div className="w-1/2 font-sans antialiased h-full mx-auto flex flex-col lg:flex-row justify-around py-4">
-        <div className="w-full lg:w-1/2 text-sm my-auto text-center mx-auto">
+    <div className="bg-purple lg:absolute bottom-0 text-white w-screen h-24 h-28 lg:h-16">
+      <div className="w-full lg:w-1/2 font-sans antialiased h-full mx-auto flex flex-col lg:flex-row justify-around py-4 space-y-2">
+        <div className="w-full lg:w-2/3 text-sm my-auto text-center mx-auto">
           Developed by Jolo Narvaez | © 2023 All rights reserved.
         </div>
         <div className="w-full lg:w-1/2 flex justify-center mx-auto space-x-4">
