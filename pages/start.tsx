@@ -184,82 +184,80 @@ const Start = () => {
       )}
 
       {game && (
-        <div className="h-screen">
-          <div className="w-full lg:w-3/4 xl:w-6/12 h-screen flex flex-col justify-center mx-auto">
-            <div className="w-full lg:w-1/2 xl:w-1/3 mx-6">
-              <button
-                onClick={back}
-                className="text-material-white bg-purple px-3 py-2 rounded-lg flex flex-row space-x-1 hover:opacity-50 transition"
+        <div className="lg:w-3/4 xl:w-6/12 h-screen flex flex-col justify-center mx-auto">
+          <div className="w-full lg:w-1/2 xl:w-1/3 mx-6">
+            <button
+              onClick={back}
+              className="text-material-white bg-purple px-3 py-2 rounded-lg flex flex-row space-x-1 hover:opacity-50 transition"
+            >
+              <div className="my-auto">
+                <BiArrowBack />
+              </div>
+              <div>Back</div>
+            </button>
+          </div>
+          <div className="flex flex-col justify-center items-center ">
+            <div className="space-y-4 my-4">
+              <div
+                className="text-center text-white text-2xl animate-in"
+                style={{ "--index": 1 } as React.CSSProperties}
               >
-                <div className="my-auto">
-                  <BiArrowBack />
+                {theme}
+              </div>
+              <div
+                className="text-material-white text-center text-xl animate-in transition"
+                style={{ "--index": 2 } as React.CSSProperties}
+              >
+                {cardIndex + 1}/{cards.length}
+              </div>
+              <div
+                className="animate-in"
+                style={{ "--index": 3 } as React.CSSProperties}
+              >
+                <div>
+                  <Card
+                    onClick={flipCard}
+                    isFlipped={isFlipped}
+                    setIsFlipped={setIsFlipped}
+                    prompt={currentPrompt}
+                  />
                 </div>
-                <div>Back</div>
-              </button>
-            </div>
-            <div className="flex flex-col justify-center items-center ">
-              <div className="space-y-4">
-                <div
-                  className="text-center text-white text-2xl animate-in"
-                  style={{ "--index": 1 } as React.CSSProperties}
-                >
-                  {theme}
-                </div>
-                <div
-                  className="text-material-white text-center text-xl animate-in transition"
-                  style={{ "--index": 2 } as React.CSSProperties}
-                >
-                  {cardIndex + 1}/{cards.length}
-                </div>
-                <div
-                  className="animate-in"
-                  style={{ "--index": 3 } as React.CSSProperties}
-                >
-                  <div>
-                    <Card
-                      onClick={flipCard}
-                      isFlipped={isFlipped}
-                      setIsFlipped={setIsFlipped}
-                      prompt={currentPrompt}
-                    />
-                  </div>
-                </div>
-                <div
-                  className="flex flex-row justify-center items-center gap-8 text-2xl animate-in"
-                  style={{ "--index": 4 } as React.CSSProperties}
-                >
-                  <motion.div whileTap={{ scale: 0.8 }}>
-                    <button
-                      onClick={prevCard}
-                      className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
-                    >
-                      <AiOutlineLeft />
-                    </button>
-                  </motion.div>
-                  <motion.div whileTap={{ scale: 0.8 }}>
-                    {cardIndex != 19 ? (
-                      <div>
-                        <button
-                          onClick={nextCard}
-                          className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
-                        >
-                          <div>
-                            <AiOutlineRight />
-                          </div>
-                        </button>
-                      </div>
-                    ) : (
-                      <div>
-                        <button
-                          onClick={refreshPage}
-                          className="text-white bg-purple py-1 px-2 rounded-md border-2 border-material-white"
-                        >
-                          <div className="text-md">Finish</div>
-                        </button>
-                      </div>
-                    )}
-                  </motion.div>
-                </div>
+              </div>
+              <div
+                className="flex flex-row justify-center items-center gap-8 text-2xl animate-in"
+                style={{ "--index": 4 } as React.CSSProperties}
+              >
+                <motion.div whileTap={{ scale: 0.8 }}>
+                  <button
+                    onClick={prevCard}
+                    className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
+                  >
+                    <AiOutlineLeft />
+                  </button>
+                </motion.div>
+                <motion.div whileTap={{ scale: 0.8 }}>
+                  {cardIndex != 19 ? (
+                    <div>
+                      <button
+                        onClick={nextCard}
+                        className="text-white bg-purple p-2 rounded-md border-2 border-material-white"
+                      >
+                        <div>
+                          <AiOutlineRight />
+                        </div>
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <button
+                        onClick={refreshPage}
+                        className="text-white bg-purple py-1 px-2 rounded-md border-2 border-material-white"
+                      >
+                        <div className="text-md">Finish</div>
+                      </button>
+                    </div>
+                  )}
+                </motion.div>
               </div>
             </div>
           </div>
