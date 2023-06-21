@@ -6,16 +6,16 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div className="text-center flex flex-col lg:flex-row antialiased w-4/5 sm:w-4/5 md:w-screen lg:w-3/5 mx-auto">
-      <div className="space-y-5 flex flex-col justify-center items-center lg:h-screen lg:w-1/2">
+    <div className="text-center flex flex-col lg:flex-row antialiased w-full sm:w-4/5 mx-auto">
+      <div className="space-y-3 flex flex-col justify-center items-center lg:h-screen lg:w-1/2">
         <div
-          className="text-5xl animate-in"
+          className="text-3xl animate-in mt-4 lg:mt-0"
           style={{ "--index": 0 } as React.CSSProperties}
         >
           More Than Strangers
         </div>
         <div
-          className="mx-auto text-xl px-4 animate-in text-justify"
+          className="mx-4 text-justify animate-in"
           style={{ "--index": 1 } as React.CSSProperties}
         >
           <p>
@@ -39,13 +39,13 @@ export default function Home() {
           src="figure2.svg"
           style={{ "--index": 1 } as React.CSSProperties}
         />
-        <div className="space-y-5">
+        <div className="space-y-2">
           <div
             className="space-y-2 animate-in"
             style={{ "--index": 2 } as React.CSSProperties}
           >
-            <div className="text-4xl">How to Play</div>
-            <div className="mx-auto px-4 text-xl text-justify">
+            <div className="text-3xl">How to Play</div>
+            <div className="mx-4">
               This game requires at least 2 people to play. Choose a
               theme and take turns asking each other the card prompts. Are you
               ready to become more than strangers?
@@ -55,10 +55,10 @@ export default function Home() {
             className="space-y-6 animate-in"
             style={{ "--index": 3 } as React.CSSProperties}
           >
-            <div className="text-3xl">Ready to Play?</div>
-            <Link href="/start" className="">
-              <button className="mt-6 px-6 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out hover:scale-110 border-purple border-2 hover:bg-purple hover:text-white text-purple">
-                <div className="text-xl font-medium">Start</div>
+            <div className="text-2xl">Ready to Play?</div>
+            <Link href="/start">
+              <button className="mt-2 px-5 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out hover:scale-110 border-purple border-2 hover:bg-purple hover:text-white text-purple">
+                <div className="font-medium">Start</div>
               </button>
             </Link>
           </div>
