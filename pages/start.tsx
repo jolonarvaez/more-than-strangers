@@ -110,10 +110,10 @@ const Start = () => {
   };
 
   return (
-    <div className="bg-game-bg h-screen">
+    <div className="bg-game-bg h-full md:h-screen">
       {themeSelect && (
-        <div className="w-full lg:w-3/4 xl:w-6/12 h-screen flex flex-col justify-center mx-auto">
-          <div className="mx-6">
+        <div className="w-full lg:w-3/4 xl:w-6/12 flex flex-col justify-center mx-auto">
+          <div className="mx-6 mt-6">
             <Link href="/">
               <button className="text-material-white bg-purple px-3 py-2 rounded-lg flex flex-row space-x-1 hover:opacity-50 transition">
                 <div className="my-auto">
@@ -123,11 +123,11 @@ const Start = () => {
               </button>
             </Link>
           </div>
-          <div className="text-material-white text-center font-medium text-3xl animate-in">
+          <div className="text-material-white text-center font-medium text-3xl animate-in my-3">
             Select a Deck Theme
           </div>
           <RadioGroup value={theme} onChange={setTheme}>
-            <div className="mt-6 mx-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="mx-6 grid grid-cols-1 md:grid-cols-2 gap-5">
               {themes.map((theme) => (
                 <RadioGroup.Option
                   key={theme.name}
@@ -164,7 +164,7 @@ const Start = () => {
             </div>
           </RadioGroup>
           <div
-            className="w-full flex justify-center animate-in"
+            className="w-full flex justify-center animate-in mb-6"
             style={{ "--index": 5 } as React.CSSProperties}
           >
             <button
